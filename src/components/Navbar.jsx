@@ -44,12 +44,12 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-3">
           <a
             href={restaurant.links.directions}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#1C1613] bg-[#F6F1E7] hover:bg-[#EFE8DA] px-3.5 py-2 rounded-full border border-[#C5A059]/30 transition-all"
+            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#1C1613] bg-[#F6F1E7] hover:bg-[#EFE8DA] px-3.5 py-2 rounded-full border border-[#C5A059]/30 transition-all focus:outline-none focus:ring-2 focus:ring-[#C5A059]"
           >
             <MapPin className="w-3.5 h-3.5 text-[#2E5A44]" />
             <span>Directions</span>
@@ -59,9 +59,9 @@ export default function Navbar() {
             href={restaurant.links.orderOnline}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-white bg-[#1C1613] hover:bg-[#C5A059] px-4 py-2.5 rounded-full transition-all shadow-sm hover:shadow"
+            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-white bg-[#1C1613] hover:bg-[#C5A059] px-4 py-2.5 rounded-full transition-all shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-[#C5A059]"
           >
-            <span>Order Online</span>
+            <span>Order / Reserve</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -74,12 +74,12 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="text-xs font-semibold text-white bg-[#1C1613] px-3 py-1.5 rounded-full"
           >
-            Order
+            Order / Reserve
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-[#1C1613] hover:text-[#C5A059] focus:outline-none"
-            aria-label="Toggle Navigation"
+            className="p-2 text-[#1C1613] hover:text-[#C5A059] focus:outline-none focus:ring-2 focus:ring-[#C5A059] rounded-lg"
+            aria-label="Toggle Navigation Menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -95,14 +95,30 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-[#1C1613] hover:text-[#C5A059] py-1 border-b border-[#1C1613]/5"
+                className="text-base font-medium text-[#1C1613] hover:text-[#C5A059] py-1 border-b border-[#1C1613]/5 flex items-center justify-between"
               >
-                {link.name}
+                <span>{link.name}</span>
               </Link>
             ))}
           </div>
 
-          <div className="pt-2 flex flex-col space-y-2">
+          <div className="pt-2 flex flex-col space-y-2 border-t border-[#C5A059]/15">
+            <a
+              href={restaurant.links.orderOnline}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-[#1C1613] text-white text-sm font-semibold shadow-xs"
+            >
+              <span>Order / Reserve Online</span>
+              <ExternalLink className="w-4 h-4 text-[#C5A059]" />
+            </a>
+            <a
+              href={restaurant.telLink}
+              className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-[#2E5A44] text-white text-sm font-semibold"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Restaurant (099793 20159)</span>
+            </a>
             <a
               href={restaurant.links.directions}
               target="_blank"
@@ -111,13 +127,6 @@ export default function Navbar() {
             >
               <MapPin className="w-4 h-4 text-[#2E5A44]" />
               <span>Get Directions (Jagatpur)</span>
-            </a>
-            <a
-              href={restaurant.telLink}
-              className="flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-[#2E5A44] text-white text-sm font-semibold"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call 099793 20159</span>
             </a>
           </div>
         </div>

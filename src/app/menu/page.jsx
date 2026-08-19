@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Search, ExternalLink, Leaf, Utensils, Info } from "lucide-react";
 import { menuCategories, fullMenu } from "@/data/menuData";
 import { restaurant } from "@/data/restaurantData";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -29,9 +30,12 @@ export default function MenuPage() {
   };
 
   return (
-    <div className="bg-[#FDFBF7] min-h-screen py-10 lg:py-16">
+    <div className="bg-[#FDFBF7] min-h-screen py-8 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Breadcrumbs */}
+        <Breadcrumbs items={[{ label: "Menu" }]} />
+
         {/* Page Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
           <span className="text-xs font-bold tracking-widest text-[#2E5A44] uppercase block">
